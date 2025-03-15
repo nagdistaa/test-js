@@ -1,20 +1,34 @@
 const userInput = document.querySelector("input");
 const submit = document.querySelector("button");
-let username = localStorage.getItem("username"); 
-userInput.value = username ;
+const heading = document.querySelector("h1");
 
-function checkInput (){
-    if(userInput.value != ""){
-        submit.setAttribute("disabled" , "disabled");
-        }
+let username = localStorage.getItem("username");
+userInput.value = username;
+
+function checkInput() {
+  if (userInput.value != "") {
+    submit.setAttribute("disabled", "disabled");
+  }
 }
 
 checkInput();
+hadleHeading()
 
-submit.addEventListener("click" , ()=>{
-    if(userInput.value != ""){
-    username = userInput.value ;
-    submit.setAttribute("disabled" , "disabled");
-    localStorage.setItem("username" , username)
-    }
-})
+submit.addEventListener("click", () => {
+  if (userInput.value != "") {
+    username = userInput.value;
+    submit.setAttribute("disabled", "disabled");
+    localStorage.setItem("username", username);
+  }
+  hadleHeading()
+});
+
+
+function hadleHeading(){
+    if (username) {
+        heading.innerHTML = `Welcome , ${username}`;
+      } else {
+        heading.innerHTML = `Welcome , Gueset`;
+      }
+      
+}
